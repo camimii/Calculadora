@@ -198,8 +198,9 @@ public class MainActivity extends AppCompatActivity {
     public void btnReturn (View v){
         DB conn = new DB(this);
         SQLiteDatabase db = conn.getReadableDatabase();
+
         Cursor cursor = db.rawQuery("SELECT * FROM ULTIMAOP", null);
-        if(cursor.isClosed()){tvOp.setText(""); tvRe.setText("");}
+        if(cursor.moveToFirst() == false){tvOp.setText(""); tvRe.setText("");}
         else{
         cursor.moveToFirst();
         String op0 = cursor.getString(cursor.getColumnIndex("OPERACION"));
