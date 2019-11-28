@@ -200,7 +200,12 @@ public class MainActivity extends AppCompatActivity {
         SQLiteDatabase db = conn.getReadableDatabase();
 
         Cursor cursor = db.rawQuery("SELECT * FROM ULTIMAOP", null);
-        if(cursor.moveToFirst() == false){tvOp.setText(""); tvRe.setText("");}
+        if(cursor.moveToFirst() == false){
+            tvOp.setText("");
+            tvRe.setText("");
+            op1 =0.0;
+            ops=0;
+            res=0.0;}
         else{
         cursor.moveToFirst();
         String op0 = cursor.getString(cursor.getColumnIndex("OPERACION"));
