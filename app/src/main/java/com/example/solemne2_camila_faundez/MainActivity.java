@@ -212,7 +212,8 @@ public class MainActivity extends AppCompatActivity {
         String total = cursor.getString(cursor.getColumnIndex("TOTAL"));
         db.close();
         tvOp.setText(op0);
-        tvRe.setText(total);}
+        tvRe.setText(total);
+        ops =0;}
     }
     public void Resultado (View v) {
         try {
@@ -262,11 +263,7 @@ public class MainActivity extends AppCompatActivity {
             ContentValues contenido = new ContentValues();
             contenido.put("OPERACION", tvOp.getText().toString());
             contenido.put("TOTAL", tvRe.getText().toString());
-            //db.insert("ULTIMAOP", null, contenido);
-
-            Long idResul = db.insert("ULTIMAOP",null,contenido);
-
-            Toast.makeText(getApplicationContext(),"Id reg: "+idResul,Toast.LENGTH_SHORT).show();
+            db.insert("ULTIMAOP", null, contenido);
             db.close();
         }
         catch (IndexOutOfBoundsException | NumberFormatException ex){
